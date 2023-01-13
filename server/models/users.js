@@ -19,7 +19,8 @@ module.exports = {
     let query = `INSERT IGNORE INTO users (username) VALUES ('${obj.username}')`;
     db.connection.query(query, (err, result) => {
       if (err) {
-        callback(err, null);
+        console.log(err)
+        callback(err);
       } else {
         callback(null, result);
       }
