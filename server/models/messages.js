@@ -18,14 +18,15 @@ module.exports = {
   }, // a function which produces all the messages - actually talking to the database. A majority of the work goes here. When done, send it back to the controllers/messages.js through callbacks
   create: function (obj, callback) {
     console.log(obj, 'obj');
-    let query = `INSERT INTO messages (text, created_at, roomname, user_id) VALUES ('${obj.message}', '${Date.now()}', '${obj.roomname}', (
+    let query = `INSERT INTO messages (text, created_at, roomname, user_id) VALUES ("${obj.message}", '${Date.now()}', '${obj.roomname}', (
       SELECT id FROM users WHERE username='${obj.username}'
     ))`;
     console.log('this is the query: ', query);
     // console.log(query);
     db.connection.query(query, (err, result) => {
       if (err) {
-        callback(err, null);
+        console.log(err)
+        callback(err);
       } else {
         callback(null, obj);
       }

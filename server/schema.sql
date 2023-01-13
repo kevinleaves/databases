@@ -6,7 +6,8 @@ USE chat;
 
 CREATE TABLE IF NOT EXISTS users (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(25)
+  username VARCHAR(25),
+  UNIQUE KEY unique_username (username)
 );
 
 CREATE TABLE IF NOT EXISTS messages (

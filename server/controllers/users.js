@@ -13,7 +13,8 @@ module.exports = {
   post: function (req, res) {
     models.users.create(req.body, (err, result) => {
       if (err) {
-        res.sendStatus(400);
+        console.log(err)
+        res.status(400);
       } else {
         res.status(201).json(result);
       }

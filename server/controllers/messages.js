@@ -15,6 +15,7 @@ module.exports = {
     // console.log(req.body, 'body');
     models.messages.create(req.body, (err, message) => {
       if (err) {
+        console.log(err)
         res.sendStatus(400);
       } else {
         res.status(201).json(message);
