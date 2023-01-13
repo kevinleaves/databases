@@ -15,10 +15,11 @@ module.exports = {
     );
   },
   create: function (obj, callback) {
-    let query = `INSERT INTO users () VALUES ()`;
+    console.log(obj);
+    let query = `INSERT INTO users (username) VALUES ('${obj.username}')`;
     db.connection.query(query, (err, result) => {
       if (err) {
-        callback(err);
+        callback(err, null);
       } else {
         callback(null, result);
       }

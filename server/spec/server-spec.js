@@ -39,6 +39,7 @@ describe('Persistent Node Chat Server', () => {
         return axios.post(`${API_URL}/messages`, { username, message, roomname });
       })
       .then(() => {
+
         // Now if we look in the database, we should find the posted message there.
 
         /* TODO: You might have to change this test to get all the data from
@@ -50,6 +51,7 @@ describe('Persistent Node Chat Server', () => {
           if (err) {
             throw err;
           }
+          console.log(results, 'results');
           // Should have one result:
           expect(results.length).toEqual(1);
 
@@ -77,6 +79,7 @@ describe('Persistent Node Chat Server', () => {
       // Now query the Node chat server and see if it returns the message we just inserted:
       axios.get(`${API_URL}/messages`)
         .then((response) => {
+          console.log(response, 'response');
           const messageLog = response.data;
           expect(messageLog[0].text).toEqual(message);
           expect(messageLog[0].roomname).toEqual(roomname);
