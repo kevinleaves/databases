@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS messages (
   message_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   text VARCHAR(140),
-  created_at DATE,
+  created_at VARCHAR(25),
   roomname VARCHAR(25),
   user_id INT,
   FOREIGN KEY (user_id) REFERENCES users(id)
